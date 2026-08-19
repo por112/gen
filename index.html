@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
+  <link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#000000">
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>SCIENCE RUN</title>
 <style>
@@ -1624,6 +1626,19 @@ document.addEventListener('touchmove', e=>{
   if(document.getElementById('gameScreen').classList.contains('active')) e.preventDefault();
 }, {passive:false});
 
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then((registration) => {
+          console.log('Service Worker ลงทะเบียนสำเร็จ:', registration.scope);
+        })
+        .catch((error) => {
+          console.error('Service Worker ลงทะเบียนล้มเหลว:', error);
+        });
+    });
+  }
 </script>
 </body>
 </html>
